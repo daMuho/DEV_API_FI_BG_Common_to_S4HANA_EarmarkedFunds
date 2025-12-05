@@ -41,7 +41,7 @@ jobs:
           # Use curl to download the ZIP, passing credentials via basic authentication
           curl -L -u "${{ secrets.CPI_USER }}:${{ secrets.CPI_PASSWORD }}" \
             -o "${{ env.ZIP_PATH }}" \
-            "${CPI_API_ENDPOINT}"
+            "${{ env.CPI_API_ENDPOINT }}"
 
           # Check if the downloaded file size is reasonable (to catch auth errors or 404s)
           FILE_SIZE=$(stat -c%s "${{ env.ZIP_PATH }}")
