@@ -35,7 +35,7 @@ jobs:
           # Note: We use the 'active' version, which corresponds to the currently deployed version.
           CPI_API_ENDPOINT="${{ secrets.CPI_BASE_URL }}/api/v1/IntegrationDesigntimeArtifacts(Id='${{ env.IFLOW_ID }}',Version='active')/\$value"
 
-          echo "Attempting to download from: ${CPI_API_ENDPOINT}"
+          echo "Attempting to download from: ${{ CPI_API_ENDPOINT }}"
 
           # Use curl to download the ZIP, passing credentials via basic authentication
           curl -L -u "${{ secrets.CPI_USER }}:${{ secrets.CPI_PASSWORD }}" \
