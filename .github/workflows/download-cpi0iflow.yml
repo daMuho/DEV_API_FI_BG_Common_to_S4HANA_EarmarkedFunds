@@ -1,4 +1,4 @@
-nname: Sync CPI iFlow Package
+name: Sync CPI iFlow Package
 on:
   # Allows manual triggering from the GitHub Actions tab
   workflow_dispatch:
