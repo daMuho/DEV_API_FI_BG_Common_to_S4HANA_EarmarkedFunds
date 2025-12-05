@@ -1,4 +1,4 @@
-nv.name: Sync CPI iFlow Package
+name: Sync CPI iFlow Package
 on:
   # Allows manual triggering from the GitHub Actions tab
   workflow_dispatch:
@@ -28,6 +28,7 @@ jobs:
           mkdir -p ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
           # Create a temporary file path for the downloaded ZIP
           echo "ZIP_PATH=${{ runner.temp }}/${{ env.IFLOW_ID }}.zip" >> $GITHUB_ENV
+          echo ${{ env.ZIP_PATH }}
 
       - name: Download iFlow Package ZIP from CPI
         run: |
