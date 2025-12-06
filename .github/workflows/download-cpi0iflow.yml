@@ -56,6 +56,8 @@ jobs:
 
       - name: Extract Contents and Clean Up
         run: |
+          ls -l ${{ env.ZIP_PATH }}
+        
           # Remove existing files in the target directory to ensure a clean sync
           rm -rf ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}/*
 
