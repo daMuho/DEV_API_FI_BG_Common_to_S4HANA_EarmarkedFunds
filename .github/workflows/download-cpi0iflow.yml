@@ -41,7 +41,7 @@ jobs:
           curl -L -u "${{ secrets.CPI_USER }}:${{ secrets.CPI_PASSWORD }}" \
             -o "${{ env.ZIP_PATH }}" \
             "${CPI_API_ENDPOINT}"
-
+          dir /home/runner/work/_temp/
           # Check if the downloaded file size is reasonable (to catch auth errors or 404s)
           FILE_SIZE=$(stat -c%s "${{ env.ZIP_PATH }}")
           if [ "$FILE_SIZE" -lt 100 ]; then
