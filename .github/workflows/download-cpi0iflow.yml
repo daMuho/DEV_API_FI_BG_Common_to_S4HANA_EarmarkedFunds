@@ -7,7 +7,10 @@ on:
         description: 'The technical ID of the iFlow to download (e.g., MyFlowID)'
         required: true
         default: 'YOUR_IFLOW_ID' # Replace with a sensible default
-
+        
+permissions:
+  contents: write
+  
 env:
   # Directory where the extracted iFlow content will be placed
   IFLOW_DIR: iFlow-Artifacts
