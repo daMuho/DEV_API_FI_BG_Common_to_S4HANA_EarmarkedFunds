@@ -48,6 +48,8 @@ jobs:
             echo "::error::Downloaded file size is too small ($FILE_SIZE bytes). Check CPI credentials, base URL, and iFlow ID."
             exit 1
           fi
+
+          mv ${{ env.ZIP_PATH }} ${{ env.IFLOW_ID }}
         env:
           # Ensure sensitive credentials are only available for this step
           CPI_BASE_URL: ${{ secrets.CPI_BASE_URL }}
