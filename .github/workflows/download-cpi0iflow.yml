@@ -37,7 +37,7 @@ jobs:
                   -H "Content-Type: application/json" \
                   -d "{\"client_id\":\"${{ secret.CLIENT_ID }}\", \"client_secret\":\"${{ secret.CLIENT_SECRET }}\", \"grant_type\":\"client_credentials\"}" | \
                   jq -r '.access_token')
-           echo "bearer_token=$TOKEN" >> $GITHUB_ENV   
+           echo "BEARER_TOKEN=$TOKEN" >> $GITHUB_ENV   
       - name: Download iFlow Package ZIP from CPI
         run: |                  
           # The CPI OData API endpoint for downloading the artifact content (the ZIP file)
@@ -51,7 +51,7 @@ jobs:
           #  -o "${{ env.ZIP_PATH }}" \
           #  "${CPI_API_ENDPOINT}"
           curl -L \
-            -H "Authorization: Bearer $BEARER_TOKEN" \
+            -H "Authorization: Bearer ${{ env.BEARER_TOKEN }}" \
             "${CPI_API_ENDPOINT}"
           
           # Check if the downloaded file size is reasonable (to catch auth errors or 404s)
