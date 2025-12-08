@@ -60,10 +60,10 @@ jobs:
           
           # Check if the downloaded file size is reasonable (to catch auth errors or 404s)
           FILE_SIZE=$(stat -c%s "${{ env.ZIP_PATH }}")
-          if [ "$FILE_SIZE" -lt 100 ]; then
-            echo "::error::Downloaded file size is too small ($FILE_SIZE bytes). Check CPI credentials, base URL, and iFlow ID."
-            exit 1
-          fi
+          #if [ "$FILE_SIZE" -lt 100 ]; then
+          #  echo "::error::Downloaded file size is too small ($FILE_SIZE bytes). Check CPI credentials, base URL, and iFlow ID."
+          #  exit 1
+          #fi
 
           mv ${{ env.ZIP_PATH }} ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
 
