@@ -57,7 +57,7 @@ jobs:
             -H "Authorization: Bearer ${{ env.BEARER_TOKEN }}" \
             -o "${{ env.ZIP_PATH }}" \
             "${CPI_API_ENDPOINT}"
-          
+          dir "${{ env.ZIP_PATH }}"
           # Check if the downloaded file size is reasonable (to catch auth errors or 404s)
           FILE_SIZE=$(stat -c%s "${{ env.ZIP_PATH }}")
           #if [ "$FILE_SIZE" -lt 100 ]; then
