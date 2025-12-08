@@ -25,21 +25,21 @@ jobs:
         uses: actions/checkout@v4
 
       # --- CPI Download and Extraction ---
-
       - name: Create Artifact Directory
         run: |
           mkdir -p ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
           # Create a temporary file path for the downloaded ZIP
           echo "ZIP_PATH=${{ runner.temp }}/${{ env.IFLOW_ID }}.zip" >> $GITHUB_ENV
-
-      - name: Download iFlow Package ZIP from CPI
+      - name: Get Bearer Token
         run: |
           # Get Bearer Token
           TOKEN=$(curl -s -X POST ${{ secrets.TOKEN_URL }} \
                   -H "Content-Type: application/json" \
                   -d "{\"client_id\":\"${{ secret.CLIENT_ID }}\", \"client_secret\":\"${{ secret.CLIENT_SECRET }}\", \"grant_type\":\"client_credentials\"}" | \
                   jq -r '.access_token')
-                  
+           echo "bearer_token=$TOKEN" >> $GITHUB_ENV   
+      - name: Download iFlow Package ZIP from CPI
+        run: |                  
           # The CPI OData API endpoint for downloading the artifact content (the ZIP file)
           # Note: We use the 'active' version, which corresponds to the currently deployed version.
           CPI_API_ENDPOINT="${{ secrets.CPI_BASE_URL }}/api/v1/IntegrationDesigntimeArtifacts(Id='${{ env.IFLOW_ID }}',Version='active')/\$value"
@@ -47,8 +47,11 @@ jobs:
           echo "Attempting to download from: ${CPI_API_ENDPOINT}"
 
           # Use curl to download the ZIP, passing credentials via basic authentication
-          curl -L -u "${{ secrets.CPI_USER }}:${{ secrets.CPI_PASSWORD }}" \
-            -o "${{ env.ZIP_PATH }}" \
+          #curl -L -u "${{ secrets.CPI_USER }}:${{ secrets.CPI_PASSWORD }}" \
+          #  -o "${{ env.ZIP_PATH }}" \
+          #  "${CPI_API_ENDPOINT}"
+          curl -L \
+            -H "Authorization: Bearer $BEARER_TOKEN" \
             "${CPI_API_ENDPOINT}"
           
           # Check if the downloaded file size is reasonable (to catch auth errors or 404s)
