@@ -27,7 +27,7 @@ jobs:
       # --- CPI Download and Extraction ---
       - name: Create Artifact Directory
         run: |
-          CLEAN_DIR=${IFLOWID/-/}
+          CLEAN_DIR=${IFLOW_ID/-/}
           mkdir -p ${{ env.IFLOW_DIR }}/$CLEAN_DIR
           #mkdir -p ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }/-/}
           # Create a temporary file path for the downloaded ZIP
