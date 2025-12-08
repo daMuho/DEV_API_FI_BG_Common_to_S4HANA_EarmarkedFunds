@@ -36,7 +36,7 @@ jobs:
           # Get Bearer Token
           TOKEN=$(curl -s -X POST ${{ secrets.TOKEN_URL }} \
                   -H "Content-Type: application/json" \
-                  -d "{\"client_id\":\"${{ secret.CLIENT_ID }}\", \"client_secret\":\"${{ secret.CLIENT_SECRET }}\", \"grant_type\":\"client_credentials\"}" | \
+                  -d "{\"client_id\":\"${{ secrets.CLIENT_ID }}\", \"client_secret\":\"${{ secrets.CLIENT_SECRET }}\", \"grant_type\":\"client_credentials\"}" | \
                   jq -r '.access_token')
            echo "BEARER_TOKEN=$TOKEN" >> $GITHUB_ENV   
            
