@@ -74,18 +74,18 @@ jobs:
           CPI_USER: ${{ secrets.CPI_USER }}
           CPI_PASSWORD: ${{ secrets.CPI_PASSWORD }}
 
-      #- name: Extract Contents and Clean Up
-      #  run: |
+      - name: Extract Contents and Clean Up
+        run: |
       #    ls -l ${{ env.ZIP_PATH }}
       #  
-      #    # Remove existing files in the target directory to ensure a clean sync
-      #    rm -rf ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}/*
+          # Remove existing files in the target directory to ensure a clean sync
+          rm -rf ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}/*
 
-      #    # Extract the contents of the downloaded ZIP into the target directory
-      #    # The -o flag overwrites files silently, and -d sets the destination directory
-      #    unzip -o ${{ env.ZIP_PATH }} -d ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
+          # Extract the contents of the downloaded ZIP into the target directory
+          # The -o flag overwrites files silently, and -d sets the destination directory
+          unzip -o ${{ env.ZIP_PATH }} -d ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
           
-      #    echo "Extraction complete. Contents, including MANIFEST.MF, are in ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}"
+          echo "Extraction complete. Contents, including MANIFEST.MF, are in ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}"
 
       # --- Git Commit and Push ---
 
