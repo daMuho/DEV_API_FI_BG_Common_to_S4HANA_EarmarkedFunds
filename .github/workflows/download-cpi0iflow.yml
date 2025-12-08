@@ -30,6 +30,7 @@ jobs:
           mkdir -p ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
           # Create a temporary file path for the downloaded ZIP
           echo "ZIP_PATH=${{ runner.temp }}/${{ env.IFLOW_ID }}.zip" >> $GITHUB_ENV
+          
       - name: Get Bearer Token
         run: |
           # Get Bearer Token
@@ -38,6 +39,7 @@ jobs:
                   -d "{\"client_id\":\"${{ secret.CLIENT_ID }}\", \"client_secret\":\"${{ secret.CLIENT_SECRET }}\", \"grant_type\":\"client_credentials\"}" | \
                   jq -r '.access_token')
            echo "BEARER_TOKEN=$TOKEN" >> $GITHUB_ENV   
+           
       - name: Download iFlow Package ZIP from CPI
         run: |                  
           # The CPI OData API endpoint for downloading the artifact content (the ZIP file)
