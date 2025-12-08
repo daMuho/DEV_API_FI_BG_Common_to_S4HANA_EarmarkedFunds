@@ -79,6 +79,8 @@ jobs:
           # Remove existing files in the target directory to ensure a clean sync
           rm -rf ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}/*
 
+          dir ${{ runner.temp }}/
+
           # Extract the contents of the downloaded ZIP into the target directory
           # The -o flag overwrites files silently, and -d sets the destination directory
           unzip -o ${{ env.ZIP_PATH }} -d ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
