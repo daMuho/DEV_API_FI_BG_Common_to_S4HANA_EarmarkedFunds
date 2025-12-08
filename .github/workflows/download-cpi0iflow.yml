@@ -55,6 +55,7 @@ jobs:
           #  "${CPI_API_ENDPOINT}"
           curl -L \
             -H "Authorization: Bearer ${{ env.BEARER_TOKEN }}" \
+            -o "${{ env.ZIP_PATH }}" \
             "${CPI_API_ENDPOINT}"
           
           # Check if the downloaded file size is reasonable (to catch auth errors or 404s)
