@@ -65,9 +65,9 @@ jobs:
           #  exit 1
           #fi
 
-          mv ${{ env.ZIP_PATH }} ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
+          #mv ${{ env.ZIP_PATH }} ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
 
-          dir ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
+          #dir ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
         env:
           # Ensure sensitive credentials are only available for this step
           CPI_BASE_URL: ${{ secrets.CPI_BASE_URL }}
