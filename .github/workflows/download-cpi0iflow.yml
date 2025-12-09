@@ -42,7 +42,7 @@ jobs:
       - name: Get Bearer Token
         run: |
           # Get Bearer Token
-          TOKEN=$(curl -s -X POST ${{ secrets.TOKEN_URL }} \
+          TOKEN=$(curl -s GET "${{ secrets.TOKEN_URL }}?grant_type=client_credentials" \
                   -H "Content-Type: application/json" \
                   -H "Authorization: ${{ secrets.CPI_BASIC64 }}"
                   #-d "{\"client_id\":\"${{ secrets.CLIENT_ID }}\", \"client_secret\":\"${{ secrets.CLIENT_SECRET }}\", \"grant_type\":\"client_credentials\"}"
