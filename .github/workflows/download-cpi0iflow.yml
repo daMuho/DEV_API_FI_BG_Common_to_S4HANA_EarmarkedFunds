@@ -45,7 +45,7 @@ jobs:
           TOKEN=$(curl -s -X POST ${{ secrets.TOKEN_URL }} \
                   -H "Content-Type: application/json" \
                   -H "grant_type: client_credentials" \
-                  -d "{\"client_id\":\"${{ secrets.CLIENT_ID }}\", \"client_secret\":\"${{ secrets.CLIENT_SECRET }}\", \"grant_type\":\"client_credentials\"}" | \
+                  -d "{\"client_id\":\"${{ secrets.CLIENT_ID }}\", \"client_secret\":\"${{ secrets.CLIENT_SECRET }}\", \"grant_type\":\"client_credentials\"}"
                   #-d "{\"client_id\":\"${{ secrets.CLIENT_ID }}\", \"client_secret\":\"${{ secrets.CLIENT_SECRET }}\", \"grant_type\":\"client_credentials\"}" | \
                   #jq -r '.access_token'
                   )
