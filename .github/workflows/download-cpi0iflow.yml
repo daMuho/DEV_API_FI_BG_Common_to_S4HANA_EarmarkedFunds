@@ -28,12 +28,12 @@ jobs:
       - name: Create Artifact Directory
         run: |
           INPUT_STRING="${{ env.IFLOW_ID }}"
-          CLEANED_STRING=$( echo "$INPUT_STRING" | tr -d '-' )
+          CLEANED_STRING=$( echo "${INPUT_STRING}" | tr -d '-' )
 
-          echo "Original String: $INPUT_STRING"
-          echo "Cleaned String: $CLEANED_STRING"
+          echo "Original String: ${INPUT_STRING}"
+          echo "Cleaned String: ${CLEANED_STRING}"
           
-          mkdir -p ${{ env.IFLOW_DIR }}/$CLEANED_STRING
+          mkdir -p ${{ env.IFLOW_DIR }}/${CLEANED_STRING}
           #mkdir -p ${{ env.IFLOW_DIR }}/${{ env.IFLOW_ID }}
           # Create a temporary file path for the downloaded ZIP
           echo "ZIP_PATH=${{ runner.temp }}/${CLEANED_STRING}.zip" >> $GITHUB_ENV
