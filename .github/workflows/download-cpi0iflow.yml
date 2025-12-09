@@ -28,7 +28,7 @@ jobs:
       - name: Create Artifact Directory
         run: |
           INPUT_STRING="${{ env.IFLOW_ID }}"
-          CLEANED_STRING=${INPUT_STRING//-/}
+          CLEANED_STRING=$( echo "$INPUT_STRING" | tr -d '-' )
 
           echo "Original String: $INPUT_STRING"
           echo "Cleaned String: $CLEANED_STRING"
